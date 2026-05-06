@@ -27,13 +27,13 @@ pip install -r requirements.txt
 # 2. llama-cpp-python (CPU build by default; CUDA build via env override)
 if [[ "${LLAMA_CUDA:-0}" == "1" ]]; then
   echo "==> Building llama-cpp-python with CUDA support (GGML_CUDA=1)"
-  CMAKE_ARGS="-DGGML_CUDA=on" pip install --upgrade --force-reinstall --no-cache-dir llama-cpp-python
+  CMAKE_ARGS="-DGGML_CUDA=on" pip install --upgrade --force-reinstall --no-cache-dir 'llama-cpp-python[server]'
 elif [[ "${LLAMA_VULKAN:-0}" == "1" ]]; then
   echo "==> Building llama-cpp-python with Vulkan support"
-  CMAKE_ARGS="-DGGML_VULKAN=on" pip install --upgrade --force-reinstall --no-cache-dir llama-cpp-python
+  CMAKE_ARGS="-DGGML_VULKAN=on" pip install --upgrade --force-reinstall --no-cache-dir 'llama-cpp-python[server]'
 else
   echo "==> Installing prebuilt llama-cpp-python (CPU)"
-  pip install --upgrade llama-cpp-python
+  pip install --upgrade 'llama-cpp-python[server]'
 fi
 
 # 3. Probe hardware (writes hardware.json)

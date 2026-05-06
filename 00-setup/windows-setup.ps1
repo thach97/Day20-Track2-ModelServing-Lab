@@ -39,10 +39,10 @@ pip install -r requirements.txt
 if ($env:LLAMA_CUDA -eq '1') {
     Write-Host "==> Building llama-cpp-python with CUDA (requires CUDA Toolkit + cmake)"
     $env:CMAKE_ARGS = '-DGGML_CUDA=on'
-    pip install --upgrade --force-reinstall --no-cache-dir llama-cpp-python
+    pip install --upgrade --force-reinstall --no-cache-dir 'llama-cpp-python[server]'
 } else {
     Write-Host "==> Installing prebuilt llama-cpp-python (CPU)"
-    pip install --upgrade llama-cpp-python
+    pip install --upgrade 'llama-cpp-python[server]'
 }
 
 # 4. Probe + download model
