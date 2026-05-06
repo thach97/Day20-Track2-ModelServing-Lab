@@ -20,9 +20,10 @@ echo "    ctx       : $CTX"
 echo "    listening : http://0.0.0.0:8080"
 echo
 
-exec python -m llama_cpp.server \
+exec python 02-llama-cpp-server/server.py \
     --model "$MODEL" \
     --host 0.0.0.0 --port 8080 \
     --n_threads "$THREADS" \
     --n_gpu_layers "$GPU_LAYERS" \
-    --n_ctx "$CTX"
+    --n_ctx "$CTX" \
+    --workers 1
